@@ -1,0 +1,23 @@
+{
+  "skill_name": "install-anti-slop-biome",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Install anti-slop-biome in this established TypeScript monorepo and audit the result without rewriting existing violations.",
+      "expected_output": "Installs the core profile, preserves existing Biome configuration, runs a bounded audit, and reports diagnostics and conflicts.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "This is a new TypeScript package using Biome 2. Add the strict anti-slop-biome rules.",
+      "expected_output": "Installs both core and strict rules, recommends relevant built-in Biome rules, and verifies lint configuration.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Audit our current Biome repo against anti-slop, but do not modify anything.",
+      "expected_output": "Runs or prepares a read-only audit and does not vendor rules or edit configuration.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+JsVariableDeclarator() as $declaration where {
+  $declaration <: r"[\s\S]*:[\s]*(?:unknown|object|Record[\s]*<[^>]+>|[{}])[\s]*=[\s]*(?:\[|\{|[(]?[\s]*(?:async[\s]+)?[(]?[A-Za-z_$])[\s\S]*",
+  not $declaration <: r"[\s\S]*=[\s]*[{}][\s]*",
+  register_diagnostic(span=$declaration, message="This explicit broad type discards known value evidence. Keep inference, validate with `satisfies`, or use a named owner contract.", severity="error")
+}

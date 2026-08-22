@@ -1,0 +1,7 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+TsReturnTypeAnnotation() as $return where {
+  $return <: r":[\s]*(?:Promise(?:Like)?[\s]*<[\s]*)?(?:[(][\s]*)?unknown(?:[\s]*[)]|[\s]*>)?[\s]*",
+  register_diagnostic(span=$return, message="This function exposes `unknown` to its caller. Parse the value at its boundary and return a named domain type.", severity="error")
+}
