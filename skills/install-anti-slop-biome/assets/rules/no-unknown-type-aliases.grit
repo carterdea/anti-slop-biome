@@ -1,0 +1,7 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+TsTypeAliasDeclaration() as $alias where {
+  $alias <: r"[\s\S]*=[\s]*(?:[(][\s]*)*unknown(?:[\s]*[)])*[\s]*;?[\s]*",
+  register_diagnostic(span=$alias, message="This type alias hides `unknown`. Keep `unknown` explicit at the parsing boundary or use the parsed owner type.", severity="error")
+}

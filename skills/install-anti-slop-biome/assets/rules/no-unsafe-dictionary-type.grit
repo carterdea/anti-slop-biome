@@ -1,0 +1,13 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+or {
+  TsReferenceType() as $dictionary where {
+    $dictionary <: r"(?:Readonly[\s]*<[\s]*)?Record[\s]*<[\s]*(?:string|number|symbol|PropertyKey)(?:[\s]*[|][\s]*(?:string|number|symbol))*[\s]*,[\s]*(?:unknown|any|object|[{}])[\s\S]*",
+    register_diagnostic(span=$dictionary, message="This dictionary value type gives callers no concrete contract. Use an owner or schema-derived value type and parse external payloads before insertion.", severity="error")
+  },
+  TsIndexSignatureTypeMember() as $dictionary where {
+    $dictionary <: r"[\s\S]*[\]][\s]*:[\s]*(?:unknown|any|object|[{}])[\s\S]*",
+    register_diagnostic(span=$dictionary, message="This dictionary value type gives callers no concrete contract. Use an owner or schema-derived value type and parse external payloads before insertion.", severity="error")
+  }
+}

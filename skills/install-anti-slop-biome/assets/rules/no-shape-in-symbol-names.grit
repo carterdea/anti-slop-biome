@@ -1,0 +1,21 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+or {
+  JsIdentifierBinding() as $name where {
+    $name <: r"(?i).*shape.*",
+    register_diagnostic(span=$name, message="Rename this symbol for its domain role. `shape` describes structure rather than ownership.", severity="error")
+  },
+  TsIdentifierBinding() as $name where {
+    $name <: r"(?i).*shape.*",
+    register_diagnostic(span=$name, message="Rename this symbol for its domain role. `shape` describes structure rather than ownership.", severity="error")
+  },
+  JsPrivateName() as $name where {
+    $name <: r"(?i).*shape.*",
+    register_diagnostic(span=$name, message="Rename this symbol for its domain role. `shape` describes structure rather than ownership.", severity="error")
+  },
+  JsxName() as $name where {
+    $name <: r"(?i).*shape.*",
+    register_diagnostic(span=$name, message="Rename this symbol for its domain role. `shape` describes structure rather than ownership.", severity="error")
+  }
+}
