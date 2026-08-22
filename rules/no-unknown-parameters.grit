@@ -1,0 +1,8 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+JsFormalParameter() as $parameter where {
+  $parameter <: r"[\s\S]*:[\s]*unknown(?:[\s]*[=,)]|[\s]*$)[\s\S]*",
+  not $parameter <: r"[\s\S]*cause[\s]*:[\s]*unknown[\s\S]*",
+  register_diagnostic(span=$parameter, message="This parameter leaves input unparsed. Accept a named domain type and run the expected parser at the I/O boundary.", severity="error")
+}

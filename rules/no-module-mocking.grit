@@ -1,0 +1,13 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+or {
+  `vi.mock($args)` as $call,
+  `vi.doMock($args)` as $call,
+  `vi.unstable_mockModule($args)` as $call,
+  `jest.mock($args)` as $call,
+  `jest.doMock($args)` as $call,
+  `jest.unstable_mockModule($args)` as $call
+} where {
+  register_diagnostic(span=$call, message="Replace module mocking with dependency injection through a real interface, service layer, or faithful test implementation.", severity="error")
+}

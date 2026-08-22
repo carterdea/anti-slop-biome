@@ -1,0 +1,8 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+JsSpread() as $spread where {
+  $spread <: contains JsConditionalExpression() as $conditional,
+  $conditional <: r"[\s\S]*[?](?:[^:]*:[\s]*[{}]|[\s]*[{}][\s]*:)[\s\S]*",
+  register_diagnostic(span=$spread, message="This conditional spread hides property omission behind an empty object. Build the object explicitly and add the property only when present.", severity="error")
+}
