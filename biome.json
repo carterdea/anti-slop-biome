@@ -1,0 +1,33 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.10/schema.json",
+  "plugins": [
+    "./rules/no-chained-type-assertions.grit",
+    "./rules/no-conditional-empty-object-spread.grit",
+    "./rules/no-known-value-widening.grit",
+    "./rules/no-module-mocking.grit",
+    "./rules/no-object-parameters.grit",
+    "./rules/no-reflect-apply.grit",
+    "./rules/no-reflect-get.grit",
+    "./rules/no-runtime-typeof.grit",
+    "./rules/no-shape-in-symbol-names.grit",
+    "./rules/no-unknown-parameters.grit",
+    "./rules/no-unknown-returns.grit",
+    "./rules/no-unknown-type-aliases.grit",
+    "./rules/no-unsafe-dictionary-type.grit"
+  ],
+  "files": {
+    "includes": ["rules/**", "scripts/**", "skills/**", "tests/**"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  }
+}

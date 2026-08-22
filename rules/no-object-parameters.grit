@@ -1,0 +1,7 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+JsFormalParameter() as $parameter where {
+  $parameter <: r"[\s\S]*:[\s]*object(?:[\s]*[=,)]|[\s]*$)[\s\S]*",
+  register_diagnostic(span=$parameter, message="This parameter uses the broad `object` type. Accept a named owner type and parse external input at its boundary.", severity="error")
+}

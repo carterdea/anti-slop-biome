@@ -1,0 +1,19 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+or {
+  TsAsExpression() as $assertion where {
+    $assertion <: or {
+      r"[\s\S]*\bas\b[\s\S]*\bas\b[\s\S]*",
+      contains TsTypeAssertionExpression()
+    },
+    register_diagnostic(span=$assertion, message="This assertion chain discards type evidence. Keep the original precise type, or parse untrusted input before narrowing it.", severity="error")
+  },
+  TsTypeAssertionExpression() as $assertion where {
+    $assertion <: or {
+      r"<[\s\S]+>[\s]*[(]?[\s]*<[\s\S]+>",
+      contains TsAsExpression()
+    },
+    register_diagnostic(span=$assertion, message="This assertion chain discards type evidence. Keep the original precise type, or parse untrusted input before narrowing it.", severity="error")
+  }
+}
